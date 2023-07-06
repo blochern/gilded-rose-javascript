@@ -6,6 +6,8 @@ export class Item {
   }
 }
 
+// comment for initial commit
+
 export let items = [];
 
 items.push(new Item("+5 Dexterity Vest", 10, 20));
