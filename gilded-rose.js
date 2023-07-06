@@ -83,25 +83,24 @@ export class Ticket extends Item {
   }
 
   update() {
-    // the sellIn date is the date of the concert, so...
+    // if the concert has passed, quality becomes 0
+    if (this.sellIn < 0) { this.quality = 0; }
 
-    // if the sellIn date is less than 10, quality increases by 2
-    if (this.sellIn < 10) { this.quality += 2 }
+    // if there are less than 5 days left, quality increases by 3
+    else if (this.sellIn < 5) { this.quality += 3; }
 
-    // if the sellIn date is less than 5, quality increases by 3
-    else if (this.sellIn < 5) { this.quality += 3 }
+    // if there are less than 10 days left, quality increases by 2
+    else if (this.sellIn < 10) { this.quality += 2; }
 
-    // if the sellIn date is less than 0, quality drops to 0
-    else if (this.sellIn < 0) { this.quality = 0 }
-
-    // if none of these are true, quality increases by 1 (default behavior)
+    // otherwise, quality increases by 1
     else { this.quality++; }
 
-    // quality can't be over 50
+    // quality can't be above 50
     if (this.quality > 50) { this.quality = 50; }
 
-    // sellIn always degrades by 1
+    // sellIn decreases as normal
     this.sellIn--;
+
   }
 }
 
