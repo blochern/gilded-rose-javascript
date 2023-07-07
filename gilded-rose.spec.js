@@ -1,6 +1,6 @@
 // import dependencies
 import { expect, describe, it } from "vitest";
-import { items, Basic, Legendary, Alcohol, Conjured, Ticket, updateQuality } from "./gilded-rose.js";
+import { items, Basic, Legendary, Aged, Conjured, Ticket, updateQuality } from "./gilded-rose.js";
 
 // One big test
 describe("updateQuality", () => {
@@ -16,7 +16,7 @@ describe("updateQuality", () => {
   });
 
   it("increases the quality of 'Aged Brie' by 1", () => {
-    const testBrie = new Alcohol("Aged Brie", 10, 15);
+    const testBrie = new Aged("Aged Brie", 10, 15);
     items.push(testBrie);
 
     updateQuality();

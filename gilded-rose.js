@@ -40,14 +40,17 @@ export class Legendary extends Item {
   }
 }
 
-export class Alcohol extends Item {
+export class Aged extends Item {
   constructor(name, sellIn, quality) {
     super(name, sellIn, quality)
   }
 
   update() {
-    // increase quality by 1
-    this.quality++;
+    // if sellIn date is more than 0, increase quality by 1
+    if (this.sellIn > 0) { this.quality++; }
+
+    // otherwise, increase quality by 2
+    else { this.quality += 2; }
 
     // quality can't be over 50
     if (this.quality > 50) { this.quality = 50; }
@@ -100,7 +103,6 @@ export class Ticket extends Item {
 
     // sellIn decreases as normal
     this.sellIn--;
-
   }
 }
 
@@ -109,7 +111,7 @@ export let items = [];
 
 // Initial seed for items array
 items.push(new Basic("+5 Dexterity Vest", 10, 20));
-items.push(new Alcohol("Aged Brie", 2, 0));
+items.push(new Aged("Aged Brie", 2, 0));
 items.push(new Basic("Elixir of the Mongoose", 5, 7));
 items.push(new Legendary("Sulfuras, Hand of Ragnaros", 0, 80));
 items.push(new Ticket("Backstage passes to a TAFKAL80ETC concert", 15, 20));
